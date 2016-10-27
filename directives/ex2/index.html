@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+
+  <script>
+  var app = angular.module('myApp', []);
+  app.directive("myOnePieceWidget", function() {
+    return {
+      restrict: "E",
+      template: "<p>Hello World</p>"
+    };
+  });
+  app.directive("myWidget", function() {
+    return {
+      restrict: "E",
+      replace: true,
+      templateUrl: "widget.html",
+      link: function (){
+        console.log("iiiiiii");
+      }
+    };
+  });
+  </script>
+
+</head>
+<body ng-app="myApp">
+
+  <my-widget></my-widget>
+  <my-one-piece-widget></my-one-piece-widget>
+
+</body>
+</html>

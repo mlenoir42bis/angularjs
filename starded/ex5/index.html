@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+</head>
+<body ng-app>
+
+    <label>Show - hide :</label>
+      <input type="checkbox" ng-model="value">
+
+    <table>
+      <tr>
+        <td>true :</td>
+        <td ng-show="value==true">Value is true</td>
+      </tr>
+      <tr>
+        <td>false :</td>
+        <td ng-show="value==false">value is false</td>
+      </tr>
+    </table>
+
+</body>
+</html>

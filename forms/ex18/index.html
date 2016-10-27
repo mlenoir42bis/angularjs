@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('mainCtrl', ['$scope', function($scope) {
+    $scope.user = {};
+    $scope.display = function() {
+      alert(' -> ' + $scope.user.firstname + ' -> ' + $scope.user.name + ' -> ' + $scope.user.age);
+    }
+  }]);
+  </script>
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="mainCtrl">
+    <form novalidate class="css-form" ng-submit="display();">
+        Name: <input type="text" ng-model="user.name" name="name" required/><br />
+        Firstname: <input type="text" ng-model="user.firstname" name="firstname" required/><br />
+        Age: <input type="number" ng-model="user.age" name="age"/>
+        <input type="submit" value="Save" />
+      </form>
+      <p>user.firstname = {{user.firstname}}</p>
+      <p>user.name = {{user.name}}</p>
+      <p>user.age = {{user.age}}</p>
+  </div>
+</body>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+
+  <script>
+  var app = angular.module('myApp', []);
+  app.directive("repeatNtimes", function() {
+  return {
+    restrict: "E",
+    compile: function(tElement, attrs) {
+      var content = tElement.children();
+      for (var i=1; i<attrs.repeat; i++) {
+        tElement.append(content.clone());
+      }
+    }
+  };
+});
+  </script>
+
+</head>
+<body ng-app="myApp">
+
+  <repeat-ntimes repeat="10">
+    <h1>Header 1</h1>
+    <p>This is the paragraph.</p>
+ </repeat-ntimes>
+
+</body>
+</html>

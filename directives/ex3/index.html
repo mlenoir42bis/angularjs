@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+  var app = angular.module('myApp', []);
+  app.directive("myOnePieceWidget", function() {
+    return {
+        restrict: "E",
+        template: "<div ng-transclude></div><h3>Heading</h3>",
+        transclude: true
+      };
+  });
+  </script>
+</head>
+<body ng-app="myApp">
+
+  <my-one-piece-widget>
+      <p>Gomu Gomu nooo!</p>
+  </my-one-piece-widget>
+
+</body>
+</html>

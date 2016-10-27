@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+    
+    app.directive("myOnePieceWidget", function() {
+      var linkFunction = function(scope, element, attributes) {
+        var paragraph = element.children()[0];
+          paragraph.onclick = function (){
+            paragraph.style.color = "red";
+          }
+      };
+      return {
+        restrict: "E",
+        link: linkFunction,
+      };
+    });
+
+  </script>
+</head>
+<body ng-app="myApp">
+  <my-one-piece-widget>
+  <p>Efreitech Rocks!</p>
+  </my-one-piece-widget>
+</body>
+</html>

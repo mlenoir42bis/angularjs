@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <style>
+    div.spicy div {
+      padding: 10px;
+      border: solid 2px blue;
+    }
+  </style>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('mainCtrl', ['$scope', function($scope) {
+    $scope.timeOfDay = 'morning';
+    $scope.name = 'Nikki';
+  }]);
+  app.controller('childCtrl', ['$scope', function($scope) {
+
+  }]);
+  app.controller('grandChildCtrl', ['$scope', function($scope) {
+
+  }]);
+  </script>
+</head>
+<body ng-app="myApp">
+
+  <div class="spicy">
+    <div ng-controller="mainCtrl">
+      <p>Good {{timeOfDay}}, {{name}}!</p>
+
+      <div ng-controller="childCtrl">
+        <p>Good {{timeOfDay}}, {{name}}!</p>
+
+        <div ng-controller="grandChildCtrl">
+          <p>Good {{timeOfDay}}, {{name}}!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

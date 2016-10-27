@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('mainCtrl', ['$scope', function($scope) {
+    $scope.names = ['Peter', 'Anton', 'John','Peter', 'PLop', 'extra'];
+  }]);
+
+  app.filter("exclude", function() {
+    return function(input, exclude) {
+      var result = [];
+      for (var i=0; i<input.length; i++) {
+        if (input[i] !== exclude) {
+          result.push(input[i]);
+        }
+      }
+      return result;
+    };
+  });
+
+  app.filter("sortAsc", function() {
+    return function(input) {
+      return input.sort();
+    };
+  });
+
+  </script>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="mainCtrl">
+    <ul>
+    <li ng-repeat="name in names | exclude:'Peter' | sortAsc">
+      <span ng-class=" $index % 2 == 0 ? 'odd' : 'peer'">{{name}}</span>
+    </li>
+    </ul>
+  </div>
+</body>
+</html>

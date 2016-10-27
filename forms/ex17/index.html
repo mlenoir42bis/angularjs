@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('mainCtrl', ['$scope', function($scope) {
+    $scope.user = {};
+    $scope.display = function() {
+      alert(' -> ' + $scope.user.firstname + ' -> ' + $scope.user.name + ' -> ' + $scope.user.age);
+    }
+  }]);
+  </script>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="mainCtrl">
+    <form novalidate class="simple-form" ng-submit="display();">
+        Name: <input type="text" ng-model="user.name" name="name" required/><br />
+        Firstname: <input type="text" ng-model="user.firstname" name="firstname" required/><br />
+        Age: <input type="number" ng-model="user.age" name="age"/>
+        <input type="submit" value="Save" />
+      </form>
+      <p>user = {{user.firstname}}</p>
+      <p>user = {{user.name}}</p>
+      <p>user = {{user.age}}</p>
+  </div>
+</body>
+</html>

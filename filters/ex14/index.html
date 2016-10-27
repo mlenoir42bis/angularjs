@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Angularjs</title>
+  <script src="../../vendors/angular.min.js"></script>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('mainCtrl', ['$scope', 'reverseFilter', function($scope, reverseFilter) {
+    $scope.greeting = 'marceau';
+    $scope.filteredGreeting = reverseFilter($scope.greeting);
+  }]);
+
+  app.filter("reverse", function() {
+    return function(input, uppercase) {
+    input = input || '';
+    var out = '';
+    for (var i = 0; i < input.length; i++) {
+      out = input.charAt(i) + out;
+    }
+    if (uppercase) {
+      out = out.toUpperCase();
+    }
+    return out;
+  };
+  });
+  </script>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="mainCtrl">
+    <input ng-model="greeting" type="text"><br>
+    No filter: {{greeting}}<br>
+    Reverse: {{greeting|reverse}}<br>
+    Reverse + uppercase: {{greeting|reverse:true}}<br>
+    Reverse, filtered in controller: {{filteredGreeting}}<br>
+  </div>
+</body>
+</html>
